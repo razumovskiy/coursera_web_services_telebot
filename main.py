@@ -1,6 +1,7 @@
 import telebot
 
-bot = telebot.TeleBot("842406090:AAFWJ1tgjbcn6nn7uPpscV-umysITtLXal4")
+bot_key = open("bot_key.txt", "r").read()
+bot = telebot.TeleBot(bot_key)
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
