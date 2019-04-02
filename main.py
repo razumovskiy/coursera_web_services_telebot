@@ -75,7 +75,7 @@ def add_location_get_location(message):
     states[message.chat.id] = StateWithInfo(State.WAIT_FOR_LOCATION_NAME, message.location)
     bot.send_message(message.chat.id, "Теперь введите название локации")
 
-@bot.message_handler(func=lambda message: states[message.chat.id].state == State.WAIT_FOR_LOCATION_NAME)
+@bot.message_handler(func=lambda message: message.chat.id in states.keys() and states[message.chat.id].state == State.WAIT_FOR_LOCATION_NAME)
 def add_location_get_name(message):
     if message.content_type != "text":
         bot.send_message(message.chat.id, "Получил что-то не то. Жду название локации\n"
