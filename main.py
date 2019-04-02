@@ -27,6 +27,7 @@ def send_welcome(message):
                                       "/add - Добавить локацию\n"
                                       "/list - Показать список сохраненных локаций\n"
                                       "/reset - Очистить все сохраненные ранее локации")
+    states[message.chat.id] = StateWithInfo(State.NO_STATE, None)
 
 @bot.message_handler(commands=['abort'])
 def abort(message):
